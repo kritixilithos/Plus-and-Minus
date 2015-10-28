@@ -1,0 +1,86 @@
+Text(5,5,"RULES:"
+Text(15,5,"COLLECT THE +"
+Text(25,5,"AVOID THE -"
+Text(45,5,"PS: THE FLASHY SCREEN"
+Text(55,5,"IS NOT MY FAULT."
+DispGraph
+Pause 
+ClrHome
+
+Goto G
+Lbl G
+getKey→A
+8→X
+4→Y
+randInt(1,16)→U
+randInt(1,8)→V
+randInt(1,16)→K
+randInt(1,8)→L
+0→S
+randInt(1,16)→M
+randInt(1,8)→N
+0→P
+
+While A≠105 or A=0
+ClrHome
+getKey→A
+
+If A=26:1→P
+If A=34:2→P
+If A=24:3→P
+If A=25:4→P
+
+If P=1:X+1→X
+If P=2:Y+1→Y
+If P=3:X-1→X
+If P=4:Y-1→Y
+
+randInt(1,4)→D
+If D=1:K+1→K
+If D=2:L+1→L
+If D=3:K-1→K
+If D=4:L-1→L
+
+randInt(1,4)→D
+If D=1:U+1→U
+If D=2:V+1→V
+If D=3:U-1→U
+If D=4:V-1→V
+
+If X≤0:1→X
+If X≥17:16→X
+If Y≤0:1→Y
+If Y≥9:8→Y
+
+If K≤0:1→K
+If K≥17:16→K
+If L≤0:1→L
+If L≥9:8→L
+
+If U≤0:1→U
+If U≥17:16→U
+If V≤0:1→V
+If V≥9:8→V
+
+If X=M and Y=N
+Then
+S+1→S
+randInt(1,16)→M
+randInt(1,8)→N
+End
+
+If (K=X and L=Y)U=X and V=Y)
+Then
+ClrHome
+Disp "GAME OVER",S
+Pause 
+Stop
+End
+
+Output(N,M,"+"
+Output(V,U,"-"
+Output(L,K,"-"
+Output(Y,X,"O"
+Output(1,15,S
+End
+Return
